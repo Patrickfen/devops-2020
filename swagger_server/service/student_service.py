@@ -46,7 +46,7 @@ def get_student_by_id(student_id, subject):
 
 def get_student_by_last_name(last_name):
     query = Query()
-    query.last_name == last_name
+    query = query.last_name == last_name
     try:
         res = student_db.search(query)[0]
     except:
