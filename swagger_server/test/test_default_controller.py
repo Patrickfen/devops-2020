@@ -3,10 +3,10 @@
 from __future__ import absolute_import
 
 from flask import json
-from six import BytesIO
 
 from swagger_server.models.student import Student  # noqa: E501
 from swagger_server.test import BaseTestCase
+import names
 
 
 class TestDefaultController(BaseTestCase):
@@ -14,7 +14,6 @@ class TestDefaultController(BaseTestCase):
 
     def test_add_student(self):
         """Test case for add_student
-
         Add a new student
         """
         body = Student()
@@ -27,14 +26,12 @@ class TestDefaultController(BaseTestCase):
             data=json.dumps(body),
             content_type='application/json')
         self.assert200(response,
-                          'Response body is : ' + response.data.decode('utf-8'))
+                       'Response body is : ' + response.data.decode('utf-8'))
         self.assertTrue(response.is_json)
         self.assertIsInstance(response.json, int)
-        
+
     def test_delete_student(self):
         """Test case for delete_student
-
-        Delete a student by ID
         """
         body = Student()
         body.first_name = names.get_first_name()
@@ -46,7 +43,17 @@ class TestDefaultController(BaseTestCase):
             data=json.dumps(body),
             content_type='application/json')
         student_id = (response.json)
-
+        # response = self.client.open(
+        #     '/service-api/student/{student_id}'.format(student_id=student_id),
+        #     method='DELETE')
+        # self.assert200(response,
+        #                'Response body is : ' + response.data.decode('utf-8'))
+        # 
+        # response = self.client.open(
+        #     '/service-api/student/{student_id}'.format(student_id=-1),
+        #     method='DELETE')
+        # self.assert404(response,
+        #                'Response body is : ' + response.data.decode('utf-8'))
 
     def test_get_student_by_id(self):
         """Test case for get_student_by_id
@@ -74,6 +81,9 @@ class TestDefaultController(BaseTestCase):
         self.assertTrue(response.is_json)
         self.assertIsInstance(response.json, dict)
 
+
 if __name__ == '__main__':
     import unittest
+
     unittest.main()
+
