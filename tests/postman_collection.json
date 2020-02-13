@@ -1688,7 +1688,7 @@
 									"    //     pm.expect(elapsed).to.be.below(100);",
 									"    // });",
 									"    // setTimeout(() => { console.log(\"waiting!\"); }, 10000);",
-									"    postman.setNextRequest(\"Find_random_student\");",
+									"    postman.setNextRequest(\"13.Find_random_student\");",
 									"}",
 									"",
 									"    ",
@@ -2053,7 +2053,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/student/?last_name={{first_name}}",
+							"raw": "{{baseUrl}}/student/?last_name={{last_name}}",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -2064,7 +2064,7 @@
 							"query": [
 								{
 									"key": "last_name",
-									"value": "{{first_name}}"
+									"value": "{{last_name}}"
 								}
 							]
 						},
