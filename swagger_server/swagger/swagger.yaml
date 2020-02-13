@@ -8,7 +8,7 @@ basePath: "/service-api"
 schemes:
 - "http"
 paths:
-  /student:
+  /student/:
     get:
       summary: "Get a student by last_name"
       description: ""
@@ -35,6 +35,7 @@ paths:
         "404":
           description: "student not found"
       x-swagger-router-controller: "swagger_server.controllers.default_controller"
+  /student:
     post:
       summary: "Add a new student"
       description: ""
