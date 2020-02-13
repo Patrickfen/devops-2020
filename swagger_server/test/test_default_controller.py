@@ -26,10 +26,10 @@ class TestDefaultController(BaseTestCase):
             method='POST',
             data=json.dumps(body),
             content_type='application/json')
-            self.assert200(response,
+        self.assert200(response,
                           'Response body is : ' + response.data.decode('utf-8'))
-            self.assertTrue(response.is_json)
-            self.assertIsInstance(response.json, int)
+        self.assertTrue(response.is_json)
+        self.assertIsInstance(response.json, int)
         
     def test_delete_student(self):
         """Test case for delete_student
